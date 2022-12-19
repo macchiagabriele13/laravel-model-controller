@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Guest\PageController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Movie;
 
@@ -14,12 +15,5 @@ use App\Models\Movie;
 |
 */
 
-Route::get('/', function () {
-    dd(Movie::all());
-    return view('home');
-})->name('home');
-
-
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
+Route::get('/', [PageController::class, 'index'])->name('home');
+Route::get('/about', [PageController::class, 'about'])->name('about');
